@@ -1,0 +1,1 @@
+Formatador para Slackware Linux.
