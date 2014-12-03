@@ -1,1 +1,1 @@
-Formatador para Slackware Linux.
+GUI para o formatador mkfs do linux.
