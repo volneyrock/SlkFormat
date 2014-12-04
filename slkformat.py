@@ -1,5 +1,5 @@
 # -*- coding: iso-8859-1 -*-
-''' Formatador de Pendrive para Slackware
+''' SlkFormat
 
 Copyright 2014 Volney Casas volneyrock@gmail.com
           
@@ -35,10 +35,11 @@ Copyright 2014 Volney Casas volneyrock@gmail.com
 
 
 from Tkinter import *
-from ttk import Combobox
+from ttk import Combobox, Progressbar
 import tkMessageBox
 import subprocess
 from usbinfo import USBdrv
+from threading import Thread
 
 class main:
     def __init__(self,master):
@@ -46,23 +47,24 @@ class main:
 #-----------------------Interface gráfica----------------------------------------------------
 
         Label(master,text='Escolha o dispositivo(CUIDADO)',
-              font=('Courier','14'),fg='red').place(relx=0.02,rely=0.02)
+              font=('Courier','14'),fg='red').place(relx = 0.02, rely = 0.02)
         self.device = Combobox(master,font=('Ariel','15'))
-        self.device.place(relx=0.04,rely=0.10,relwidth=0.90)
+        self.device.place(relx = 0.04, rely = 0.10, relwidth = 0.90)
 
         Label(master,text='Escolha o Sistema de arquivos',
-              font=('Courier','14')).place(relx=0.02,rely=0.22)
+              font=('Courier','14')).place(relx = 0.02, rely = 0.22)
         self.sis = Combobox(master,font=('Ariel','15'))
-        self.sis.place(relx=0.04,rely=0.30,relwidth=0.90)
+        self.sis.place(relx = 0.04, rely = 0.30, relwidth = 0.90)
 
         self.botao_formatar = Button(master,text='Formatar',font=('Courier','25'),
                                      command=self.formatar)
-        self.botao_formatar.place(relx=0.20,rely=0.70)
+        self.botao_formatar.bind("<Button-1>", self.mudabotao)
+        self.botao_formatar.place(relx = 0.20, rely = 0.50, relwidth = 0.54)
 
         self.botao_refresh = Button(master,text='Atualizar',font=('Courier','25'),
                                      command=self.devices)
-        self.botao_refresh.place(relx=0.18,rely=0.85)
-               
+        self.botao_refresh.place(relx = 0.20, rely = 0.65, relwidth = 0.54)
+
         self.devices()
         self.sis_file()
 #----------------------Funções---------------------------------------------------------------        
@@ -74,28 +76,36 @@ class main:
         sis_file = ['ext2','vfat','ntfs','reiserfs']
         self.sis['values'] = sis_file
 
+    def mudabotao(self,event):
+        self.botao_formatar['text'] = 'Espere'
+
     def formatar(self):
+        
         dv = self.device.get()
         st = self.sis.get()
-        
+
         try:
             subprocess.call(['umount','%s'%dv])
             if st == 'vfat':
                 subprocess.call(['mkfs.vfat', '%s' %dv])
+                
             elif st == 'ntfs':
                 subprocess.call(['mkfs.ntfs', '%s' %dv])
+
             elif st == 'reiserfs':
                 subprocess.call(['mkfs.reiserfs', '%s' %dv])
+
             else:
                 subprocess.call(['mkfs.ext2', '%s' %dv])
 
             tkMessageBox.showinfo('Aviso!',u'Device formatado com sucesso')
-            
+                
         except:
             tkMessageBox.showinfo('Erro!',u'Device ocupado, ou inválido, ou você não é root')
+                
         self.devices()
+        self.botao_formatar['text'] = 'Formatar'      
         
-                         
 root = Tk()
 root.title("SlkFormat")
 root.geometry("350x450")
