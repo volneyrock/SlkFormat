@@ -48,27 +48,27 @@ class main:
 #-----------------------Interface gráfica----------------------------------------------------
         self.frame1 = Frame(master, bg = COR_FUNDO)
         self.frame1.place(relheight = 1.0, relwidth = 1.0)
+
+        self.botao_refresh = Button(self.frame1, text = 'Atualizar dispositivos', font = ('Courier','10'),
+                                     fg = 'black', bg = COR_BOTAO_2, borderwidth = 3,
+                                     command = self.devices)
+        self.botao_refresh.place(relx = 0.202, rely = 0.02, relwidth = 0.54)
         
         Label(self.frame1, text = 'Escolha o dispositivo(CUIDADO)',
-              font=('Courier','14'), fg = 'red', bg = COR_FUNDO).place(relx = 0.02, rely = 0.02)
+              font=('Courier','14'), fg = 'red', bg = COR_FUNDO).place(relx = 0.02, rely = 0.12)
         self.device = Combobox(self.frame1, font = ('Ariel','15'))
-        self.device.place(relx = 0.04, rely = 0.10, relwidth = 0.90)
+        self.device.place(relx = 0.04, rely = 0.20, relwidth = 0.90)
 
         Label(self.frame1, text='Escolha o Sistema de arquivos',
-              font=('Courier','14'), fg = 'white', bg = COR_FUNDO).place(relx = 0.02, rely = 0.22)
+              font=('Courier','14'), fg = 'white', bg = COR_FUNDO).place(relx = 0.02, rely = 0.32)
         self.sis = Combobox(self.frame1, font = ('Ariel','15'))
-        self.sis.place(relx = 0.04, rely = 0.30, relwidth = 0.90)
+        self.sis.place(relx = 0.04, rely = 0.40, relwidth = 0.90)
 
         self.botao_formatar = Button(self.frame1, text = 'Formatar', font = ('Courier','25'),
                                      fg = 'black', bg = COR_BOTAO_1, borderwidth = 3,
                                      command = self.formatar)
         self.botao_formatar.bind("<Button-1>", self.mudabotao)
-        self.botao_formatar.place(relx = 0.20, rely = 0.50, relwidth = 0.54)
-
-        self.botao_refresh = Button(self.frame1, text = 'Atualizar', font = ('Courier','25'),
-                                     fg = 'black', bg = COR_BOTAO_2, borderwidth = 3,
-                                     command = self.devices)
-        self.botao_refresh.place(relx = 0.20, rely = 0.65, relwidth = 0.54)
+        self.botao_formatar.place(relx = 0.21, rely = 0.82, relwidth = 0.54)
 
         self.devices()
         self.sis_file()
