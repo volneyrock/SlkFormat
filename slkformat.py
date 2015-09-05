@@ -40,29 +40,34 @@ import tkMessageBox
 import subprocess
 from usbinfo import USBdrv
 from threading import Thread
+from config import *
 
 class main:
     def __init__(self,master):
 
 #-----------------------Interface gráfica----------------------------------------------------
-
-        Label(master,text='Escolha o dispositivo(CUIDADO)',
-              font=('Courier','14'),fg='red').place(relx = 0.02, rely = 0.02)
-        self.device = Combobox(master,font=('Ariel','15'))
+        self.frame1 = Frame(master, bg = COR_FUNDO)
+        self.frame1.place(relheight = 1.0, relwidth = 1.0)
+        
+        Label(self.frame1, text = 'Escolha o dispositivo(CUIDADO)',
+              font=('Courier','14'), fg = 'red', bg = COR_FUNDO).place(relx = 0.02, rely = 0.02)
+        self.device = Combobox(self.frame1, font = ('Ariel','15'))
         self.device.place(relx = 0.04, rely = 0.10, relwidth = 0.90)
 
-        Label(master,text='Escolha o Sistema de arquivos',
-              font=('Courier','14')).place(relx = 0.02, rely = 0.22)
-        self.sis = Combobox(master,font=('Ariel','15'))
+        Label(self.frame1, text='Escolha o Sistema de arquivos',
+              font=('Courier','14'), fg = 'white', bg = COR_FUNDO).place(relx = 0.02, rely = 0.22)
+        self.sis = Combobox(self.frame1, font = ('Ariel','15'))
         self.sis.place(relx = 0.04, rely = 0.30, relwidth = 0.90)
 
-        self.botao_formatar = Button(master,text='Formatar',font=('Courier','25'),
-                                     command=self.formatar)
+        self.botao_formatar = Button(self.frame1, text = 'Formatar', font = ('Courier','25'),
+                                     fg = 'black', bg = COR_BOTAO_1, borderwidth = 3,
+                                     command = self.formatar)
         self.botao_formatar.bind("<Button-1>", self.mudabotao)
         self.botao_formatar.place(relx = 0.20, rely = 0.50, relwidth = 0.54)
 
-        self.botao_refresh = Button(master,text='Atualizar',font=('Courier','25'),
-                                     command=self.devices)
+        self.botao_refresh = Button(self.frame1, text = 'Atualizar', font = ('Courier','25'),
+                                     fg = 'black', bg = COR_BOTAO_2, borderwidth = 3,
+                                     command = self.devices)
         self.botao_refresh.place(relx = 0.20, rely = 0.65, relwidth = 0.54)
 
         self.devices()

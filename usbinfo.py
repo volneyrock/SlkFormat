@@ -38,7 +38,7 @@ class USBdrv:
                     yield letter+':'
         if os.name == "posix":
             for device in list(ascii_lowercase):
-                if device != 'a':
+                if device != 'a' and device != 'b':
                     yield '/dev/sd'+device+'1'
 
 
