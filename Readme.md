@@ -1,3 +1,5 @@
+SlkFormat
+=========
 GUI para o formatador mkfs do linux.
 
 
@@ -11,7 +13,8 @@ git clone git@github.com:volneyrock/SlkFormat.git
 
 python setup.py install
 
-
+Uso:
+====
 Para usar, apenas digite no terminal como root:
 
 slk-format
