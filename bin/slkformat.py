@@ -38,12 +38,12 @@ from Tkinter import *
 from ttk import Combobox, Progressbar
 import tkMessageBox
 import subprocess
-from usbinfo import USBdrv
-from threading import Thread
-from config import *
+from modules.usbinfo import USBdrv
+#from threading import Thread
+from modules.config import *
 
 class main:
-    def __init__(self,master):
+    def __init__(self, master):
 
 #-----------------------Interface gráfica----------------------------------------------------
         self.frame1 = Frame(master, bg = COR_FUNDO)
