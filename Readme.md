@@ -8,6 +8,7 @@ pip install SlkFormat
 Instalação pelo github
 ======================
 git clone git@github.com:volneyrock/SlkFormat.git
+
 python setup.py install
 
 
