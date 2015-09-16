@@ -2,5 +2,5 @@
 import subprocess
 
 if __name__ == '__main__':
-	subprocess.call(['python', 'bin/slkformat.py'])
+	subprocess.call(['python', '/usr/lib/python2.7/site-packages/bin/slkformat.py'])
 	

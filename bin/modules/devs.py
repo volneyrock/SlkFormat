@@ -7,4 +7,4 @@ def devs():
 if __name__ == '__main__':
  	d = devs()
  	for i in d:
- 		print i
+ 		print i[-4:]

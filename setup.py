@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name ='SlkFormat',
@@ -8,7 +8,7 @@ setup(
     author='volney',
     author_email='volneyrock@gmail.com',
     url='https://github.com/volneyrock/SlkFormat',
-    packages=(['bin', 'bin.modules']),
+    packages=find_packages(),
     long_description="GUI para o formatador mkfs do linux",
     classifiers=[
         "Programming Language :: Python :: 2.7",

@@ -1,0 +1,12 @@
+setup.py
+slk-format
+SlkFormat.egg-info/PKG-INFO
+SlkFormat.egg-info/SOURCES.txt
+SlkFormat.egg-info/dependency_links.txt
+SlkFormat.egg-info/top_level.txt
+bin/__init__.py
+bin/slkformat.py
+bin/modules/__init__.py
+bin/modules/config.py
+bin/modules/devs.py
+bin/modules/usbinfo.py

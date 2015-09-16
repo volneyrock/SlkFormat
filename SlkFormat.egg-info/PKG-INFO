@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: SlkFormat
+Version: 0.5
+Summary: Formatador de dispositivos
+Home-page: https://github.com/volneyrock/SlkFormat
+Author: volney
+Author-email: volneyrock@gmail.com
+License: GPL
+Description: GUI para o formatador mkfs do linux
+Keywords: formatador gráfico,linux formater,pendrive linux formater
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2.7
